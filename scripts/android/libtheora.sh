@@ -7,6 +7,10 @@ else
   ASM_OPTIONS="--disable-asm"
 fi
 
+# UPDATE BUILD FLAGS
+export OGG_CFLAGS="$(pkg-config --cflags ogg --dont-define-prefix)"
+export OGG_LIBS="$(pkg-config --libs --static ogg --dont-define-prefix)"
+
 # ALWAYS CLEAN THE PREVIOUS BUILD
 make distclean 2>/dev/null 1>/dev/null
 

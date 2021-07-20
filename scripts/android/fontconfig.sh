@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# UPDATE BUILD FLAGS
+export FREETYPE_CFLAGS="$(pkg-config --cflags freetype2 --dont-define-prefix)"
+export FREETYPE_LIBS="$(pkg-config --libs --static freetype2 --dont-define-prefix)"
+
 # ALWAYS CLEAN THE PREVIOUS BUILD
 make distclean 2>/dev/null 1>/dev/null
 

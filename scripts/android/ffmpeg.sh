@@ -80,12 +80,12 @@ for library in {1..58}; do
 
     case ${ENABLED_LIBRARY} in
     chromaprint)
-      CFLAGS+=" $(pkg-config --cflags libchromaprint 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libchromaprint 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libchromaprint 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libchromaprint 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-chromaprint"
       ;;
     cpu-features)
-      pkg-config --libs --static cpu-features 2>>"${BASEDIR}"/build.log 1>/dev/null
+      pkg --dont-define-prefix-config --libs --static cpu-features 2>>"${BASEDIR}"/build.log 1>/dev/null
       if [[ $? -eq 1 ]]; then
         echo -e "ERROR: cpu-features was not found in the pkg-config search path\n" 1>>"${BASEDIR}"/build.log 2>&1
         echo -e "\nffmpeg: failed\n\nSee build.log for details\n"
@@ -93,199 +93,199 @@ for library in {1..58}; do
       fi
       ;;
     dav1d)
-      CFLAGS+=" $(pkg-config --cflags dav1d 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static dav1d 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags dav1d 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static dav1d 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libdav1d"
       ;;
     fontconfig)
-      CFLAGS+=" $(pkg-config --cflags fontconfig 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static fontconfig 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags fontconfig 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static fontconfig 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libfontconfig"
       ;;
     freetype)
-      CFLAGS+=" $(pkg-config --cflags freetype2 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static freetype2 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags freetype2 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static freetype2 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libfreetype"
       ;;
     fribidi)
-      CFLAGS+=" $(pkg-config --cflags fribidi 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static fribidi 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags fribidi 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static fribidi 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libfribidi"
       ;;
     gmp)
-      CFLAGS+=" $(pkg-config --cflags gmp 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static gmp 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags gmp 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static gmp 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-gmp"
       ;;
     gnutls)
-      CFLAGS+=" $(pkg-config --cflags gnutls 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static gnutls 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags gnutls 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static gnutls 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-gnutls"
       ;;
     kvazaar)
-      CFLAGS+=" $(pkg-config --cflags kvazaar 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static kvazaar 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags kvazaar 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static kvazaar 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libkvazaar"
       ;;
     lame)
-      CFLAGS+=" $(pkg-config --cflags libmp3lame 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libmp3lame 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libmp3lame 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libmp3lame 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libmp3lame"
       ;;
     libaom)
-      CFLAGS+=" $(pkg-config --cflags aom 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static aom 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags aom 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static aom 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libaom"
       ;;
     libass)
-      CFLAGS+=" $(pkg-config --cflags libass 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libass 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libass 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libass 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libass"
       ;;
     libiconv)
-      CFLAGS+=" $(pkg-config --cflags libiconv 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libiconv 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libiconv 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libiconv 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-iconv"
-      HIGH_PRIORITY_INCLUDES+=" $(pkg-config --cflags libiconv 2>>"${BASEDIR}"/build.log)"
+      HIGH_PRIORITY_INCLUDES+=" $(pkg-config --dont-define-prefix --cflags libiconv 2>>"${BASEDIR}"/build.log)"
       ;;
     libilbc)
-      CFLAGS+=" $(pkg-config --cflags libilbc 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libilbc 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libilbc 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libilbc 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libilbc"
       ;;
     libtheora)
-      CFLAGS+=" $(pkg-config --cflags theora 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static theora 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags theora 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static theora 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libtheora"
       ;;
     libvidstab)
-      CFLAGS+=" $(pkg-config --cflags vidstab 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static vidstab 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags vidstab 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static vidstab 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libvidstab --enable-gpl"
       ;;
     libvorbis)
-      CFLAGS+=" $(pkg-config --cflags vorbis 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static vorbis 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags vorbis 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static vorbis 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libvorbis"
       ;;
     libvpx)
-      CFLAGS+=" $(pkg-config --cflags vpx 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs vpx 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs cpu-features 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags vpx 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs vpx 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs cpu-features 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libvpx"
       ;;
     libwebp)
-      CFLAGS+=" $(pkg-config --cflags libwebp 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libwebp 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libwebp 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libwebp 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libwebp"
       ;;
     libxml2)
-      CFLAGS+=" $(pkg-config --cflags libxml-2.0 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libxml-2.0 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libxml-2.0 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libxml-2.0 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libxml2"
       ;;
     opencore-amr)
-      CFLAGS+=" $(pkg-config --cflags opencore-amrnb 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static opencore-amrnb 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags opencore-amrnb 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static opencore-amrnb 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libopencore-amrnb"
       ;;
     openh264)
-      CFLAGS+=" $(pkg-config --cflags openh264 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static openh264 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags openh264 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static openh264 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libopenh264"
       ;;
     opus)
-      CFLAGS+=" $(pkg-config --cflags opus 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static opus 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags opus 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static opus 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libopus"
       ;;
     rubberband)
-      CFLAGS+=" $(pkg-config --cflags rubberband 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static rubberband 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags rubberband 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static rubberband 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-librubberband --enable-gpl"
       ;;
     sdl)
-      CFLAGS+=" $(pkg-config --cflags sdl2 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static sdl2 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags sdl2 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static sdl2 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-sdl2"
       ;;
     shine)
-      CFLAGS+=" $(pkg-config --cflags shine 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static shine 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags shine 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static shine 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libshine"
       ;;
     snappy)
-      CFLAGS+=" $(pkg-config --cflags snappy 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static snappy 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags snappy 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static snappy 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libsnappy"
       ;;
     soxr)
-      CFLAGS+=" $(pkg-config --cflags soxr 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static soxr 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags soxr 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static soxr 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libsoxr"
       ;;
     speex)
-      CFLAGS+=" $(pkg-config --cflags speex 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static speex 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags speex 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static speex 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libspeex"
       ;;
     tesseract)
-      CFLAGS+=" $(pkg-config --cflags tesseract 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static tesseract 2>>"${BASEDIR}"/build.log)"
-      CFLAGS+=" $(pkg-config --cflags giflib 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static giflib 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags tesseract 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static tesseract 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags giflib 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static giflib 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libtesseract"
       ;;
     twolame)
-      CFLAGS+=" $(pkg-config --cflags twolame 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static twolame 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags twolame 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static twolame 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libtwolame"
       ;;
     vo-amrwbenc)
-      CFLAGS+=" $(pkg-config --cflags vo-amrwbenc 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static vo-amrwbenc 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags vo-amrwbenc 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static vo-amrwbenc 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libvo-amrwbenc"
       ;;
     x264)
-      CFLAGS+=" $(pkg-config --cflags x264 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static x264 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags x264 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static x264 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libx264 --enable-gpl"
       ;;
     x265)
-      CFLAGS+=" $(pkg-config --cflags x265 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static x265 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags x265 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static x265 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libx265 --enable-gpl"
       ;;
     xvidcore)
-      CFLAGS+=" $(pkg-config --cflags xvidcore 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static xvidcore 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags xvidcore 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static xvidcore 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-libxvid --enable-gpl"
       ;;
     expat)
-      CFLAGS+=" $(pkg-config --cflags expat 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static expat 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags expat 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static expat 2>>"${BASEDIR}"/build.log)"
       ;;
     libogg)
-      CFLAGS+=" $(pkg-config --cflags ogg 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static ogg 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags ogg 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static ogg 2>>"${BASEDIR}"/build.log)"
       ;;
     libpng)
-      CFLAGS+=" $(pkg-config --cflags libpng 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static libpng 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags libpng 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static libpng 2>>"${BASEDIR}"/build.log)"
       ;;
     libuuid)
-      CFLAGS+=" $(pkg-config --cflags uuid 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static uuid 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags uuid 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static uuid 2>>"${BASEDIR}"/build.log)"
       ;;
     nettle)
-      CFLAGS+=" $(pkg-config --cflags nettle 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static nettle 2>>"${BASEDIR}"/build.log)"
-      CFLAGS+=" $(pkg-config --cflags hogweed 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static hogweed 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags nettle 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static nettle 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags hogweed 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static hogweed 2>>"${BASEDIR}"/build.log)"
       ;;
     android-zlib)
-      CFLAGS+=" $(pkg-config --cflags zlib 2>>"${BASEDIR}"/build.log)"
-      LDFLAGS+=" $(pkg-config --libs --static zlib 2>>"${BASEDIR}"/build.log)"
+      CFLAGS+=" $(pkg-config --dont-define-prefix --cflags zlib 2>>"${BASEDIR}"/build.log)"
+      LDFLAGS+=" $(pkg-config --dont-define-prefix --libs --static zlib 2>>"${BASEDIR}"/build.log)"
       CONFIGURE_POSTFIX+=" --enable-zlib"
       ;;
     android-media-codec)
@@ -373,7 +373,7 @@ ${SED_INLINE} "s/\$version/$FFMPEG_VERSION/g" "${BASEDIR}"/src/"${LIB_NAME}"/ffb
   --ranlib="${RANLIB}" \
   --strip="${STRIP}" \
   --nm="${NM}" \
-  --extra-libs="$(pkg-config --libs --static cpu-features)" \
+  --extra-libs="$(pkg-config --dont-define-prefix --libs --static cpu-features)" \
   --target-os=android \
   ${ASM_OPTIONS} \
   --enable-cross-compile \
