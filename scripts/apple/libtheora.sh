@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# UPDATE BUILD FLAGS
+export OGG_CFLAGS="$(pkg-config --dont-define-prefix --cflags ogg)"
+export OGG_LIBS="$(pkg-config --dont-define-prefix --libs --static ogg)"
+
 # ALWAYS CLEAN THE PREVIOUS BUILD
 make distclean 2>/dev/null 1>/dev/null
 

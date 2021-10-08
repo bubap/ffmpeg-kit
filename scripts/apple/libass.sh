@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# UPDATE BUILD FLAGS
+export FREETYPE_CFLAGS="$(pkg-config --dont-define-prefix --cflags freetype2)"
+export FREETYPE_LIBS="$(pkg-config --dont-define-prefix --libs --static freetype2)"
+export FRIBIDI_CFLAGS="$(pkg-config --dont-define-prefix --cflags fribidi)"
+export FRIBIDI_LIBS="$(pkg-config --dont-define-prefix --libs --static fribidi)"
+export FONTCONFIG_CFLAGS="$(pkg-config --dont-define-prefix --cflags fontconfig)"
+export FONTCONFIG_LIBS="$(pkg-config --dont-define-prefix --libs --static fontconfig)"
+export HARFBUZZ_CFLAGS="$(pkg-config --dont-define-prefix --cflags harfbuzz)"
+export HARFBUZZ_LIBS="$(pkg-config --dont-define-prefix --libs --static harfbuzz)"
+export LIBPNG_CFLAGS="$(pkg-config --dont-define-prefix --cflags libpng)"
+export LIBPNG_LIBS="$(pkg-config --dont-define-prefix --libs --static libpng)"
+
 # SET BUILD OPTIONS
 ASM_OPTIONS="--enable-asm"
 case ${ARCH} in
