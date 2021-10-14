@@ -1,5 +1,17 @@
 # FFmpegKit ![GitHub release](https://img.shields.io/badge/release-v4.5-blue.svg) ![Maven Central](https://img.shields.io/maven-central/v/com.arthenica/ffmpeg-kit-min) ![CocoaPods](https://img.shields.io/cocoapods/v/ffmpeg-kit-ios-min) ![pub](https://img.shields.io/pub/v/ffmpeg_kit_flutter.svg) ![npm](https://img.shields.io/npm/v/ffmpeg-kit-react-native.svg)
 
+------------
+To build for bubap ios
+```
+./ios.sh --xcframework --disable-armv7 --disable-armv7s --disable-i386 --disable-arm64e --enable-ios-audiotoolbox --enable-ios-avfoundation --enable-ios-bzip2 --enable-ios-libiconv --enable-ios-videotoolbox --enable-ios-zlib --enable-dav1d --enable-fontconfig --enable-freetype --enable-fribidi --enable-gmp --enable-gnutls --enable-kvazaar --enable-lame --enable-libass --enable-libilbc --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libxml2 --enable-opencore-amr --enable-opus --enable-shine --enable-snappy --enable-soxr --enable-speex --enable-twolame --enable-vo-amrwbenc --disable-x86-64-mac-catalyst --disable-arm64-mac-catalyst --enable-openh264
+```
+
+To build for bubap android
+```
+./android.sh --disable-arm-v7a --enable-android-media-codec --enable-android-zlib --enable-dav1d --enable-fontconfig --enable-freetype --enable-fribidi --enable-gmp --enable-gnutls --enable-kvazaar --enable-lame --enable-libass --enable-libiconv --enable-libilbc --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libxml2 --enable-opencore-amr --enable-opus --enable-shine --enable-snappy --enable-soxr --enable-speex --enable-twolame --enable-vo-amrwbenc --enable-openh264
+```
+------------
+
 <img src="https://github.com/tanersener/ffmpeg-kit/blob/main/docs/assets/ffmpeg-kit-icon-v9.png" width="240">
 
 `FFmpegKit` is a collection of tools to use `FFmpeg` in `Android`, `iOS`, `macOS`, `tvOS`, `Flutter` and `React Native` applications.
