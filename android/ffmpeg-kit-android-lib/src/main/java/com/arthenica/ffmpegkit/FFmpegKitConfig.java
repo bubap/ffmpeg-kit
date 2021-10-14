@@ -85,6 +85,8 @@ public class FFmpegKitConfig {
     private static final SparseArray<ParcelFileDescriptor> pfdMap;
     private static LogRedirectionStrategy globalLogRedirectionStrategy;
 
+    public static MC264Encoder mMC264Encoder = new MC264Encoder();
+
     static {
 
         Exceptions.registerRootPackage("com.arthenica");

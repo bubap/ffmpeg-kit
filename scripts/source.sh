@@ -33,7 +33,7 @@ get_library_source() {
     ;;
   ffmpeg)
     SOURCE_REPO_URL="https://github.com/bubap/FFmpeg"
-    SOURCE_ID="a102928885b45d568cab9f3c7c5b0c2d80529fc1"
+    SOURCE_ID="83ccc0e02cd1f8ca9a0b52c126c3f1197aa0ad8d"
     SOURCE_TYPE="COMMIT"
     # SOURCE_GIT_DESCRIBE="n4.5-dev-2008-g90da43557f" # git describe --tags
     ;;
