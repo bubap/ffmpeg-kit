@@ -1,0 +1,74 @@
+name: relase scripts
+
+# on:
+#   push:
+#     branches:
+#       - main
+on: push
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Bump version and push tag
+        id: version
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          INITIAL_VERSION: 0.0.3
+          DEFAULT_BUMP: patch
+  release:
+    name: release main on macos
+    needs: bump
+    runs-on: macos-11
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+          #       - name: set up adopt jdk 8
+          #         uses: actions/setup-java@v2.2.0
+          #         with:
+          #           distribution: 'adopt'
+          #           java-version: '8'
+          #       - name: set up android ndk
+          #         run: |
+          #           curl -s "https://dl.google.com/android/repository/android-ndk-r23-darwin.zip" -o ndk.zip
+          #           unzip -q -o ndk.zip -d .ndk
+          #           echo "ANDROID_NDK_ROOT=$PWD/.ndk/$(ls .ndk)" >> $GITHUB_ENV
+          #       - name: set up deps
+          #         run: |
+          #           brew install automake gperf texinfo yasm nasm bison autogen meson ninja
+          #           echo "/usr/local/opt/bison/bin" >> $GITHUB_PATH
+          #      - name: run the ios build script
+          #        run: ./tools/release/ios-bubap.sh
+          #      - name: print build logs
+          #        if: ${{ always() }}
+          #        run: cat build.log
+          #      - name: print ffbuild logs
+          #        if: ${{ failure() }}
+          #        run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+          #      - name: run the android build script
+          #        run: ./tools/release/android-bubap.sh
+          #      - name: print build logs
+          #        if: ${{ always() }}
+          #        run: cat build.log
+          #      - name: print ffbuild logs
+          #        if: ${{ failure() }}
+          #        run: '[[ -f ./src/ffmpeg/ffbuild/config.log ]] && tail -50 ./src/ffmpeg/ffbuild/config.log'
+      - name: test
+        run: |
+          echo ${{ needs.bump.outputs.tag }} > test.txt
+      - name: Github Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            test.txt
+            # ./prebuilt/ffmpeg-kit-bubap-ios-xcframework.zip
+            # ./prebuilt/bundle-android-aar/ffmpeg-kit/ffmpeg-kit-bubap-android.aar
