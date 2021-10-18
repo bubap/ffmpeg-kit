@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name              = "ffmpeg-kit-ios-bubap"
-    s.version           = "0.0.3"
+    s.version           = "VERSION"
     s.summary           = "FFmpeg Kit iOS Full Static Framework"
     s.description       = <<-DESC
     FFmpeg Kit iOS Full Static Framework For bubagump
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     s.requires_arc      = true
     s.libraries         = 'z', 'bz2', 'c++', 'iconv'
 
-    s.source            = { :http => "https://github.com/bubap/ffmpeg-kit/releases/download/0.0.3-alpha/ffmpeg-kit-bubap-0.0.3-alpha-ios-xcframework.zip" }
+    s.source            = { :http => "https://github.com/bubap/ffmpeg-kit/releases/download/VERSION/ffmpeg-kit-bubap-ios-xcframework.zip" }
 
     s.ios.deployment_target = '12.1'
     s.ios.frameworks    = 'AudioToolbox','AVFoundation','CoreMedia','VideoToolbox'
